@@ -14,7 +14,6 @@ ul {
   padding: 0;
 }
 
-
 li {
   list-style: none;
   font-size: 20px;
@@ -22,6 +21,7 @@ li {
   color: #2c7873;
   padding: 0;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .weather-app-wrapper {
@@ -34,29 +34,26 @@ li {
   border-radius: 5px;
 }
 
-
 .overview {
-line-height: 1;
+  line-height: 1.2;
 }
 
 .weather-icon {
   width: 25%;
-  margin-right: 10px;
-
+  margin-right: 5px;
 }
 
-.currentTemperature {
+#currentTemperature {
   position: relative;
   top: 15px;
   color: #ffd800;
   font-size: 64px;
   line-height: 1;
-
 }
 .degree {
- position: relative;
- top: -20px;
- left: -15px;
- font-size: 20px;
- color: #2c7873;
+  position: relative;
+  top: -20px;
+  left: -5px;
+  font-size: 20px;
+  color: #2c7873;
 }

@@ -11,6 +11,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,30 +30,35 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>London</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Friday 05:00</li>
-              <li>Clear</li>
+              <li id="description">Clear</li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="clearfix weather-temperature">
-                <img src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png" alt="Clear" class="weather-icon" />
-                  <span class="currentTemperature">
-                    24 
-                  </span>
-                    <span class="degree">
-                      °C | <a href="#">°F</a>
-                     
-                    </span>
+                <img
+                  src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png"
+                  alt="Clear"
+                  class="weather-icon"
+                />
+                <span id="currentTemperature"></span>
+                <span class="degree"> °C | <a href="#">°F</a> </span>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity: 73%</li>
-                <li>Wind: 14m/s</li>
+                <li>
+                  Humidity:
+                  <span id="humidity"></span>%
+                </li>
+                <li>
+                  Wind:
+                  <span id="wind"></span>
+                  m/s
+                </li>
               </ul>
             </div>
           </div>
