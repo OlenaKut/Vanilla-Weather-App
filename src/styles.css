@@ -21,6 +21,8 @@ li {
   color: #2c7873;
   padding: 0;
   margin: 0;
+}
+li:first-letter {
   text-transform: capitalize;
 }
 
