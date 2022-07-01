@@ -22,7 +22,6 @@ function formatDate(tamestamp) {
 }
 
 function dispayTemperature(response) {
-  console.log(response.data);
   let dateElement = document.querySelector("#date");
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#currentTemperature");
@@ -44,8 +43,19 @@ function dispayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "82914429dbcac50d79e072b0c73a8cb3";
-let city = "rivne";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "82914429dbcac50d79e072b0c73a8cb3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(dispayTemperature);
+}
 
-axios.get(apiUrl).then(dispayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Lviv");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
