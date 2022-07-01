@@ -1,0 +1,62 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 46px;
+  font-weight: 400;
+  color: #ffd800;
+  line-height: 1;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+li {
+  list-style: none;
+  font-size: 20px;
+  list-style: none;
+  color: #2c7873;
+  padding: 0;
+  margin: 0;
+}
+
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+.weather-app {
+  padding: 20px;
+  border: 1px solid rgb(215, 209, 209);
+  border-radius: 5px;
+}
+
+
+.overview {
+line-height: 1;
+}
+
+.weather-icon {
+  width: 25%;
+  margin-right: 10px;
+
+}
+
+.currentTemperature {
+  position: relative;
+  top: 15px;
+  color: #ffd800;
+  font-size: 64px;
+  line-height: 1;
+
+}
+.degree {
+ position: relative;
+ top: -20px;
+ left: -15px;
+ font-size: 20px;
+ color: #2c7873;
+}
