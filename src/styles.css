@@ -51,7 +51,7 @@ li:first-letter {
   position: relative;
   top: -20px;
   left: -5px;
-  font-size: 20px;
+  font-size: 16px;
   color: #2c7873;
 }
 
@@ -62,4 +62,23 @@ a {
 .weather-temperature .active {
   color: #2c7873;
   cursor: default;
+}
+
+.weather-forecast {
+  margin-top: 10px;
+  text-align: center;
+}
+.weather-forecast-box {
+}
+.weather-forecast-box:hover {
+  background-color: #effdff;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+  color: #ffd800;
+}
+.weather-forecast-temperature {
+  font-size: 14px;
+  color: #36bbd2;
 }
