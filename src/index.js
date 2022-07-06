@@ -21,7 +21,8 @@ function formatDate(tamestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function dispayForecast() {
+function dispayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = `<div class="row">`;
@@ -48,6 +49,13 @@ function dispayForecast() {
   forecastElement.innerHTML = forecastHtml;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "82914429dbcac50d79e072b0c73a8cb3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(dispayForecast);
+}
+
 function dispayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let cityElement = document.querySelector("#city");
@@ -70,6 +78,8 @@ function dispayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -114,5 +124,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 search("Lviv");
-
-dispayForecast();
