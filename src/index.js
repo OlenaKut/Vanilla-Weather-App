@@ -21,6 +21,33 @@ function formatDate(tamestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function dispayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHtml = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `       <div class="col-2 shadow-sm rounded-3 weather-forecast-box">
+                <div class="weather-forecast-date">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/04n@2x.png"
+                  alt=""
+                  width="46px"
+                />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max">18°</span>
+                  <span class="weather-forecast-temperature-max">12°</span>
+                </div>
+              </div>
+  `;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function dispayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let cityElement = document.querySelector("#city");
@@ -87,3 +114,5 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 search("Lviv");
+
+dispayForecast();
