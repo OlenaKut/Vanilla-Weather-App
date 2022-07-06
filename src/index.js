@@ -1,5 +1,5 @@
-function formatDate(tamestamp) {
-  let date = new Date(tamestamp);
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -21,28 +21,46 @@ function formatDate(tamestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function dispayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHtml = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `       <div class="col-2 shadow-sm rounded-3 weather-forecast-box">
-                <div class="weather-forecast-date">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `       <div class="col-2 shadow-sm rounded-3 weather-forecast-box">
+                <div class="weather-forecast-date">${formatForecastDay(
+                  forecastDay.dt
+                )}</div>
                 <img
-                  src="http://openweathermap.org/img/wn/04n@2x.png"
+                  src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
                   alt=""
                   width="46px"
                 />
                 <div class="weather-forecast-temperature">
-                  <span class="weather-forecast-temperature-max">18°</span>
-                  <span class="weather-forecast-temperature-max">12°</span>
+                  <span class="weather-forecast-temperature-max"> ${Math.round(
+                    forecastDay.temp.max
+                  )}°</span>
+                  <span class="weather-forecast-temperature-max">${Math.round(
+                    forecastDay.temp.min
+                  )}°</span>
                 </div>
               </div>
   `;
+    }
   });
 
   forecastHtml = forecastHtml + `</div>`;
@@ -96,7 +114,6 @@ function handleSubmit(event) {
 
 function showFahrenheitTemperature(event) {
   event.preventDefault();
-  //remove the active class the celsius link
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#currentTemperature");
